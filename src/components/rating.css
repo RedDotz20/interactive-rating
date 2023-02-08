@@ -1,0 +1,28 @@
+.rating-container {
+	width: 350px;
+	height: 400px;
+	background-color: gray;
+	padding: 1rem;
+}
+
+.title,
+.description,
+.rating-choice {
+	margin-bottom: 1rem;
+}
+
+.rating-choice {
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.rate {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: orangered;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
