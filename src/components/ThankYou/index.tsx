@@ -1,10 +1,16 @@
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import illustration from '../../assets/illustration-thank-you.svg';
 import './thankyou.module.css';
 
 export default function ThankYou() {
+	const navigate = useNavigate();
 	const location = useLocation(),
-		ratingSelected = location.state.rating;
+		ratingSelected = location.state?.rating;
+
+	useEffect(() => {
+		ratingSelected === undefined && navigate('/');
+	}, [navigate, ratingSelected]);
 
 	return (
 		<section>
