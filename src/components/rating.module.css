@@ -1,0 +1,92 @@
+@import url(../styles/index.css);
+
+.ratingContainer {
+	display: flex;
+	flex-direction: column;
+	width: 420px;
+	height: 420px;
+	background-color: var(--main-bg-color);
+	padding: 2.25rem;
+	border-radius: 24px;
+}
+
+.ratingContainer > :not(button) {
+	margin-bottom: 1rem;
+}
+
+.ratingContainer > h1 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--text-color);
+}
+.radioContainer label,
+.ratingContainer > img {
+	padding: 1rem;
+	background-color: var(--secondary-bg-color);
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.ratingContainer > p {
+	overflow-wrap: break-word;
+	font-size: 15px;
+	color: var(--accent-color);
+}
+
+.radioContainer {
+	display: inline-flex;
+	overflow: hidden;
+	border-radius: 15px;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.radioContainer input[type='radio'] {
+	display: none;
+}
+
+.radioContainer label {
+	display: grid;
+	place-items: center;
+	vertical-align: middle;
+	overflow: hidden;
+	height: 55px;
+	width: 55px;
+	color: var(--accent-color);
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.1s;
+	user-select: none;
+}
+
+.radioContainer input[type='radio']:checked + label {
+	background-color: var(--highlight-color);
+	color: var(--text-color);
+}
+
+.radioContainer label:hover,
+.ratingContainer > button {
+	cursor: pointer;
+	background-color: var(--hover-color);
+	color: var(--text-color);
+}
+
+.ratingContainer > button {
+	letter-spacing: 2px;
+	margin-top: auto;
+	width: 100%;
+	height: 50px;
+	border-radius: 28px;
+	background-color: var(--highlight-color);
+	font-weight: 700;
+	font-size: 1rem;
+	border: 0;
+	transition: background-color 0.3s, color 0.1s;
+}
+
+.ratingContainer > button:hover {
+	background-color: var(--text-color);
+	color: var(--highlight-color);
+}
