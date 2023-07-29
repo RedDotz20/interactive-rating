@@ -1,8 +1,9 @@
-import Rating from './components/Rating';
+import Routes from './routes';
+
 function App() {
 	return (
 		<div className="app">
-			<Rating />
+			<Routes />
 		</div>
 	);
 }

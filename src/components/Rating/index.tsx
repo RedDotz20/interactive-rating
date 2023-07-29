@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
-import IconStar from '../assets/icon-star.svg';
+import { useNavigate } from 'react-router-dom';
+import IconStar from '../../assets/icon-star.svg';
 import styles from './rating.module.css';
 
 export default function Rating() {
 	const [selectedOption, setSelectedOption] = useState<number | null>(null);
+	const navigate = useNavigate();
 
-	// console.log(selectedOption);
-
-	const options = [
-		{ value: 1, label: '1' },
-		{ value: 2, label: '2' },
-		{ value: 3, label: '3' },
-		{ value: 4, label: '4' },
-		{ value: 5, label: '5' },
-	];
+	const options = Array.from({ length: 5 }, (_, index) => ({
+		value: index + 1,
+		label: String(index + 1),
+	}));
 
 	const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSelectedOption(parseInt(event.target.value));
+	};
+
+	const hanldleRatingResponse = (event: React.MouseEvent<HTMLElement>) => {
+		if (selectedOption) {
+			navigate('/thank-you', { state: { rating: selectedOption } });
+		}
 	};
 
 	return (
@@ -48,7 +51,7 @@ export default function Rating() {
 				))}
 			</div>
 
-			<button>SUBMIT</button>
+			<button onClick={hanldleRatingResponse}>SUBMIT</button>
 		</section>
 	);
 }
