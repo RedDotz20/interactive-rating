@@ -1,51 +1,31 @@
-name: interactive-rating
+name: Interactive Rating
 
 on:
   push:
     branches:
-      - master
+      - master # Change this to the branch you want to trigger the deployment from
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: 16 # Change this to your desired Node.js version
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install
 
-      - name: Build project
-        run: npm run build
-
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: production-files
-          path: ./dist
+      - name: Build the Vite.js application
+        run: npm run build # Change this to your Vite.js build command
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: dist # Change this to the build output directory of your Vite.js application
+          publish_branch: gh-pages # Change this if you want to deploy to a different branch
